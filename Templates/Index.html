@@ -1,0 +1,27 @@
+{% extends "Layout.html" %}
+
+{% block body %}
+
+<div class="row">
+
+    <div class="col-md-5">
+        {% include 'Partials/_message.html' %}
+        {% include 'Partials/_taskform.html' %}
+    </div>
+
+    <div class="col-md-7">
+            {% for contact in contacts %}
+            <div class="card mb-3 p-3 text-white bg-dark"> <!-- Agregado card, margin-bottom y padding -->
+                <h5>{{contact.name}}</h5>
+                <p>{{contact.email}}</p>
+                <p class="mb-2">{{contact.phone_number}}</p> <!-- Agregado margin-bottom -->
+                <div class="btn-group">  <!-- Agregado btn-group para los botones -->
+                    <a href="{{url_for('contacts.update_contact', id = contact.id)}}" class="btn btn-primary me-2">Editar</a>
+                    <a href="{{url_for('contacts.delete_contact', id = contact.id)}}" class="btn btn-danger">Eliminar</a>
+                </div>
+            </div>
+            {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

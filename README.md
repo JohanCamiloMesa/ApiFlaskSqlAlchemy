@@ -75,12 +75,12 @@ pip install -r requirements.txt
 MYSQL_USER = your_user
 MYSQL_PASSWORD = your_password
 MYSQL_HOST = localhost
-MYSQL_DB = contactos
+MYSQL_DB = animes
 ```
 
 5. Initialize database:
 ```sql
-CREATE DATABASE IF NOT EXISTS contactos;
+CREATE DATABASE IF NOT EXISTS animme;
 ```
 
 ### 🏃‍♂️ Running the Application

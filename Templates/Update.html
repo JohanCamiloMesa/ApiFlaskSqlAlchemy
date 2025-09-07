@@ -5,31 +5,50 @@
     <div class="col-md-5">
         <div class="card bg-dark text-light">
             <div class="card-body">
-                <form action="{{ url_for('contacts.update_contact', id=contact.id) }}" method="POST">    
+                <form action="{{ url_for('animes.update_anime', id=anime.id) }}" method="POST">    
                     <div class="mb-3">
-                        <label class="d-block">Actualiza el nombre</label>
-                        <input type="text" name="name" value="{{ contact.name }}" 
+                        <label class="d-block">Actualizar nombre</label>
+                        <input type="text" name="name" value="{{ anime.name }}" 
                         class="form-control rounded-0 bg-white border-0" 
                         required>
                     </div>
 
                     <div class="mb-3">
-                        <label class="d-block">Actualiza el correo electronico</label>
-                        <input type="text" name="email" value="{{ contact.email }}" 
+                        <label class="d-block">Actualizar género</label>
+                        <input type="text" name="genre" value="{{ anime.genre }}" 
                         class="form-control rounded-0 bg-white border-0" 
                         required>
                     </div>
 
                     <div class="mb-3">
-                        <label class="d-block">Actualiza el numero de telefono</label>
-                        <input type="text" name="phone_number" value="{{ contact.phone_number }}" 
+                        <label class="d-block">Actualizar año</label>
+                        <input type="number" name="year" value="{{ anime.year }}" 
                         class="form-control rounded-0 bg-white border-0" 
                         required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="d-block">Actualizar tipo</label>
+                        <select name="type" class="form-control rounded-0 bg-white border-0" required>
+                            <option value="TV" {% if anime.type == 'TV' %}selected{% endif %}>TV</option>
+                            <option value="Película" {% if anime.type == 'Película' %}selected{% endif %}>Película</option>
+                            <option value="OVA" {% if anime.type == 'OVA' %}selected{% endif %}>OVA</option>
+                            <option value="Especial" {% if anime.type == 'Especial' %}selected{% endif %}>Especial</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="d-block">Actualizar estado</label>
+                        <select name="status" class="form-control rounded-0 bg-white border-0" required>
+                            <option value="En emisión" {% if anime.status == 'En emisión' %}selected{% endif %}>En emisión</option>
+                            <option value="Finalizado" {% if anime.status == 'Finalizado' %}selected{% endif %}>Finalizado</option>
+                            <option value="Próximamente" {% if anime.status == 'Próximamente' %}selected{% endif %}>Próximamente</option>
+                        </select>
                     </div>
 
                     <div class="d-flex gap-2">
-                        <button type="submit" class="btn btn-primary flex-grow-1">Save</button>
-                        <a href="{{ url_for('contacts.home') }}" class="btn btn-secondary flex-grow-1">Back</a>
+                        <button type="submit" class="btn btn-primary flex-grow-1">Guardar</button>
+                        <a href="{{ url_for('animes.home') }}" class="btn btn-secondary flex-grow-1">Volver</a>
                     </div>
                 </form>
             </div>

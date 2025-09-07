@@ -2,22 +2,24 @@
 
 {% block body %}
 
-<div class="row">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4" style="padding: 20px;">
+            {% include 'Partials/_message.html' %}
+            {% include 'Partials/_taskform.html' %}
+        </div>
 
-    <div class="col-md-5">
-        {% include 'Partials/_message.html' %}
-        {% include 'Partials/_taskform.html' %}
-    </div>
-
-    <div class="col-md-7">
-            {% for contact in contacts %}
-            <div class="card mb-3 p-3 text-white bg-dark"> <!-- Agregado card, margin-bottom y padding -->
-                <h5>{{contact.name}}</h5>
-                <p>{{contact.email}}</p>
-                <p class="mb-2">{{contact.phone_number}}</p> <!-- Agregado margin-bottom -->
-                <div class="btn-group">  <!-- Agregado btn-group para los botones -->
-                    <a href="{{url_for('contacts.update_contact', id = contact.id)}}" class="btn btn-primary me-2">Editar</a>
-                    <a href="{{url_for('contacts.delete_contact', id = contact.id)}}" class="btn btn-danger">Eliminar</a>
+        <div class="col-md-8">
+            {% for anime in animes %}
+            <div class="card mb-3 p-3 text-white bg-dark">
+                <h5>{{anime.name}}</h5>
+                <p>Género: {{anime.genre}}</p>
+                <p>Año: {{anime.year}}</p>
+                <p>Tipo: {{anime.type}}</p>
+                <p>Estado: {{anime.status}}</p>
+                <div class="btn-group">
+                    <a href="{{url_for('animes.update_anime', id = anime.id)}}" class="btn btn-primary me-2">Editar</a>
+                    <a href="{{url_for('animes.delete_anime', id = anime.id)}}" class="btn btn-danger">Eliminar</a>
                 </div>
             </div>
             {% endfor %}

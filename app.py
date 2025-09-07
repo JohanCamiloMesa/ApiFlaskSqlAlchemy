@@ -1,7 +1,8 @@
-from flask import Flask
+from flask import Flask 
 from Controller.animes_controller import animes
 from Utils.database import db
 from Config.db_config import DATABASE_CONNECTION_URI
+from flask import redirect, url_for
 
 app = Flask(__name__)
 
@@ -15,3 +16,7 @@ db.init_app(app)
 
 # Register blueprints
 app.register_blueprint(animes)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return redirect(url_for('animes.home'))

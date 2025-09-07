@@ -2,27 +2,10 @@
 
 {% block body %}
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-4" style="padding: 20px;">
-            {% include 'Partials/_message.html' %}
-            {% include 'Partials/_taskform.html' %}
-        </div>
-
-        <div class="col-md-8">
-            {% for anime in animes %}
-            <div class="card mb-3 p-3 text-white bg-dark">
-                <h5>{{anime.name}}</h5>
-                <p>Género: {{anime.genre}}</p>
-                <p>Año: {{anime.year}}</p>
-                <p>Tipo: {{anime.type}}</p>
-                <p>Estado: {{anime.status}}</p>
-                <div class="btn-group">
-                    <a href="{{url_for('animes.update_anime', id = anime.id)}}" class="btn btn-primary me-2">Editar</a>
-                    <a href="{{url_for('animes.delete_anime', id = anime.id)}}" class="btn btn-danger">Eliminar</a>
-                </div>
-            </div>
-            {% endfor %}
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh; padding-top: 2rem;">
+    <div class="w-100" style="max-width: 400px;">
+        {% include 'Partials/_message.html' %}
+        {% include 'Partials/_taskform.html' %}
     </div>
 </div>
 
